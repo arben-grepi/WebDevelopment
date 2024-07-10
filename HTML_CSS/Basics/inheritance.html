@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Strong is currently the child of the p element, and it has inherited its properties */
+      p {
+        color: blue;
+        /* borders does not have automatic inheritance, though you can force it manually */
+        border: 1px solid black;
+      }
+      /* if we want to stop the inheritance,
+      we can set the color to initial  */
+      strong {
+        color: initial;
+        /* here we force the inheritment of the border we have defined in the parent element; */
+        border: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum <strong>strong</strong> dolor sit amet consectetur adipisicing
+      elit. Quo, molestias!
+    </p>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 400px;
+        height: 200px;
+        background: dodgerblue;
+        box-shadow: 10px 10px;
+        box-shadow: 10px -10px;
+        box-shadow: -10px 10px gray;
+        /* third number is the transparency of the shadow */
+        box-shadow: 10px 10px 20px gray;
+        /* 0 0 will place the shadow right under the box */
+        box-shadow: 0px 0px 5px black;
+      }
+      h1 {
+        color: white;
+        /* instead of using color, we can use rgba with these values
+        Now, we can change the color of the backround, and the shadow will blend perfectly */
+        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"><h1>Header</h1></div>
+  </body>
+</html>

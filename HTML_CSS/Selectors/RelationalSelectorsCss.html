@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normlize.css" />
+    <style>
+      /* this rule will apply to any paragraph, inside the #products section */
+      #products p {
+        color: orange;
+      }
+      /* if we only want to choose the p that are not inside another element  */
+      #products > p {
+        color: red;
+      }
+      /* how to choose the direct sibling of the #products element, meaning the p that is under the #poducts */
+      #products + p {
+        color: purple;
+      }
+      /* with tilda, we can select all general paragraphs (not just the direct) under an element */
+      /* #products ~ p {
+      } */
+    </style>
+  </head>
+  <body>
+    <section id="products">
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <article>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+      </article>
+    </section>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, in.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, in.</p>
+  </body>
+</html>

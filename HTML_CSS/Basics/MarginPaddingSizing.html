@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        /* we should the margin property to ceparate elements,
+        and the padding to add space between the border and the content area of the element */
+        margin: 20px;
+        border: solid gold;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        /* content is set to 100x100 */
+        background-color: gold;
+        /* 
+        padding: 20px;
+        border: 10px solid orange; */
+        /* the box gets bigger. 160x160. Any padding or border make the box bigger*/
+
+        /* margin: 10px; */
+        /*Margin wont change the size of the element, it will move it further from other elements*/
+
+        /*To simplify things, we have box-sizing property. By default, it is set to content box
+        If we specify it to border-box, the height and widht will apply to the borderbox*/
+        /* box-sizing: border-box; */
+        /*because padding is 20*2 and border 10*2, the content box remains 40x40.
+        if we remove padding and border, that content area becomes width and height values*/
+      }
+      .spanbox {
+        /* if we want to have a inline element (opposite of a block element div) we use
+        display property. In div elements the display is set to block. In span it is set
+        to inline. But we can also use inline-block element */
+        /*Normally span element doesent care about the height and with properties, but with
+        display: inline-block property, we can add widht and height*/
+        display: inline-block;
+        width: 40px;
+        height: 60px;
+        background-color: gold;
+      }
+
+      /*We dont want to add this following element for every singl html element, so we use
+      Universal selector. Shouldnt be used all the time, because it can affect performance 
+      This rule wont apply to sudo element. That is why we do *::before adn *::after, ¨
+      so we get all the elements*/
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+    </style>
+    <script src="node_modules/jquery/dist/jslibrary/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // $(".box").hide(500).show(500);
+        // $(".box").slideUp(500).delay(1000).slideDown(500);
+        // $(".box")
+        //   //häviää näkyvistä tasaisesti (huom koko block element katoaa)
+        //   .fadeToggle(1000)
+        //   .show(1000)
+        //   //odotuttaa
+        //   .delay(3000)
+        //   .css({
+        //     color: "red",
+        //     backgroundColor: "lightblue",
+        //     fontWeight: "bold",
+        //   }) v vc v
+      });
+    </script>
+  </head>
+  <body>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <div class="box">Hello</div>
+    <div class="box">Hello</div>
+    <!-- if we want to get rid of the small space between these two span elements, we do this:
+        <span class="spanbox">Hello</span><span class="spanbox">Hello</span> -->
+    <span class="spanbox">Hello</span><span class="spanbox">Hello</span>
+  </body>
+</html>

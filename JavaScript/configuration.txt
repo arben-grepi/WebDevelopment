@@ -1,0 +1,12 @@
+configuration
+
+"configurations": [
+    {
+      "name": "Launch in Node.js",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}\\kysyarvo.js", // Path to your JavaScript file
+      "runtimeExecutable": "node", // Adjust if using a different Node.js runtime
+      "console": "integratedTerminal", // Choose your preferred console output
+      "stopOnEntry": false // Start debugger at the entry point
+    }

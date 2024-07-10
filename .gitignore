@@ -1,0 +1,116 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+jspm_packages/
+bower_components/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# dotenv environment variables file
+.env
+.env.test
+.env.production
+
+# Next.js build output
+.next/
+out/
+
+# Nuxt.js build output
+.nuxt/
+dist/
+
+# Gatsby files
+.cache/
+public/
+
+# Vue.js build output
+dist/
+*.local
+
+# Serverless directories
+.serverless/
+
+# Optional stylelint cache
+.stylelintcache
+
+# Python
+*.pyc
+__pycache__/
+
+# MongoDB
+/data/db/
+*.lock
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.iml
+
+# Various other files
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Build directories
+dist/
+build/
+coverage/
+
+# Compiled source files
+*.out
+*.exe
+*.o
+*.a
+*.so
+*.dll
+*.dylib
+*.lib
+*.jar
+*.war
+*.class
+
+# Static site generators
+.next/
+.cache/
+public/
+out/
+
+# API Keys
+*.env
+
+# TypeScript
+*.tsbuildinfo

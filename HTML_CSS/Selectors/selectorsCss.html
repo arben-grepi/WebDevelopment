@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normlize.css" />
+    <style>
+      /* MOST OF THE TIME WE SELECT ATTRIBUTES BY THEIR TYPE, ID AND CLASS */
+      body {
+        margin-left: 20px;
+      }
+      #products {
+        color: red;
+      }
+      .aboutCompany {
+        color: purple;
+      }
+      /* selecting by attribute */
+      /* looks for the existence of target attribute */
+      a[target] {
+        color: red;
+      }
+      /* looking for the exact match. This code can be fragile */
+      /* a[href="http://google.com"]
+      {
+      } */
+      /* applies to any link where there is a word "google" in it. Works even if we do changes to the link */
+      a[href*="google"] {
+        font-weight: bold;
+      }
+      /* applies to where the link begins with https and ends with .com */
+      /* a[href^="https"][href$=".com"] {
+      } */
+      /*Universal selector. Shouldnt be used all the time, because it can affect performance 
+      This rule wont apply to sudo element. That is why we do *::before adn *::after, ¨
+      so we get all the elements*/
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- section#products -->
+    <section id="products">
+      <!-- article*3 -->
+      <article>Product1</article>
+      <article>Product2</article>
+      <article>Product3</article>
+    </section>
+    <!-- section.aboutCompany -->
+    <section class="aboutCompany">
+      <article>info1</article>
+      <article>info2</article>
+      <article>info3</article>
+    </section>
+    <a href="http://google.com" target="_blank">Google</a>
+  </body>
+</html>

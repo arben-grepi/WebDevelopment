@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* When there are two Css rules for a single element, there is a hierarchy that determines
+        which rule takes priority */
+      /* 1. ID selector
+        2. Class and attribute selectors
+        3. Element selector */
+
+      h1 {
+        /* if we use the !important, it will take priority over others 
+        This is considered bad practise*/
+        color: blue !important;
+      }
+      .highlight {
+        color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <h1 class="highlight">Heading</h1>
+    </article>
+  </body>
+</html>

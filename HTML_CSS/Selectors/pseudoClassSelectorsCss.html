@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* psuedoclass selector.  */
+      /* article :first-child {
+        font-style: italic;
+        font-size: 120%;
+      } */
+      /* here both heading and the first p will be affected. Both first of types */
+      /* article :first-of-type {
+        font-style: italic;
+        font-size: 120%;
+      } */
+      /* this will affect only the last p */
+      /* article p:last-of-type {
+        color: red;
+      } */
+      /* will select the last element, regarless what it is */
+      /* article :last-child {
+        color: blue;
+      } */
+
+      /* selects every odd (pariton) element in the unordered list.  */
+      /* article p:nth-child(odd) {
+        color: pink;
+      } */
+
+      /* selects every even (parillinen) element in the unordered list.  */
+      /* article p:nth-child(even) {
+        color: yellow;
+      } */
+
+      /* selects every third elemen in the u-list */
+      /* article p:nth-child(3n) {
+        color: blue;
+      } */
+
+      /* ul li:nth-child(odd) {
+        color: blue;
+      } */
+      /* ul li:nth-child(even) {
+        color: blue;
+      } */
+      /* ul li:nth-child(3n) {
+        color: blue;
+      } */
+      /* link that has been visited. */
+      /* a:visited {
+        color: yellowgreen;
+      } */
+      /* will apply to anything that is a link */
+      /* a:link {
+        color: black;
+      } */
+      /* hover applyis when we move our mouse on top of it.
+      focus applies when we have pressed it */
+      a:hover,
+      a:focus {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <h2>Heading</h2>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+        <li>item 5</li>
+      </ul>
+    </article>
+    <a href="https://google.fi">Google</a>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+Termi "query parameters" kääntyy suomeksi muotoon "kyselyparametrit". 
+Kyselyparametrit ovat URL-osoitteen perässä olevia muuttujia, jotka välittävät
+tietoja web-palvelimelle. Ne alkavat kysymysmerkillä (?) ja niitä käytetään 
+tiettyjen tietojen suodattamiseen tai tarkentamiseen, kun haetaan web-sivuja tai
+API-kutsuja. Esimerkiksi, URL-osoitteessa example.com?avain=arvo, avain=arvo on 
+kyselyparametri, joka ohjaa palvelinta palauttamaan tiettyä tietoa. Ne ovat 
+keskeisiä dynaamisten web-sivujen ja verkkosovellusten toiminnassa, mahdollistaen 
+käyttäjäkohtaisen sisällön näyttämisen ja interaktiivisten toimintojen 
+suorittamisen.

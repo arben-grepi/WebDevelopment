@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        /*with this, we make the page two times longer than the view port*/
+        height: 200vh;
+      }
+      .boxes {
+        border: 3px solid lightgray;
+        /*we set this to relative, because we wanted to set the box-three relative
+        to this element. Check box-three for position: absolute
+        Important to note, when we apsolutely position an element, it gets removed
+        from the normal flow of the things. All the other elements are rendered as if the
+        apsolute position of the element doesent exist. */
+
+        /* position: relative; */
+      }
+      .box {
+        width: 5rem;
+        height: 5rem;
+      }
+      .box-one {
+        background-color: gold;
+      }
+      .box-two {
+        background-color: tomato;
+        /*by default position is static. when we set it on relative, we can start 
+        setting up how many units we want to move it based on its static/normal position*/
+        position: relative;
+        /*left property moves the item to the right*/
+        left: 4rem;
+        /* we can set up right property, which is the opposite of left */
+        /* top: 2rem; */
+        bottom: 2rem;
+        /*depth index is the z index. By default it is zero. If we set it to negative
+        we can put the element behind another element*/
+        z-index: -1;
+      }
+      .box-three {
+        background-color: dodgerblue;
+        /*when we set position to absolute, the default is to set it on the top of the viewport
+        the difference with fixed, is that this element will stay up when we scroll down, when 
+        with "fixed" it will stay up regardless of if we scroll down. If set an another elements
+        position to "relative", this element will set itself based on that element*/
+        /* position: absolute;
+        right: 0;
+        bottom: 0; */
+        /*we can also position this element as fixed. We can use this property to set an element 
+        somewhere based on your viewport. So if we set top: 0, the element will stay at the top
+        even when we scroll down. This is great for a menu bar */
+        position: fixed;
+        top: 0;
+        left: 10rem;
+        width: 30rem;
+        height: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="boxes">
+      <div class="box box-one"></div>
+      <div class="box box-two"></div>
+      <div class="box box-three"></div>
+    </div>
+  </body>
+</html>

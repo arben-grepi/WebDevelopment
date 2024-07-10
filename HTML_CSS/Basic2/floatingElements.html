@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .avatar {
+        width: 5rem;
+        height: 5rem;
+        background-color: gold;
+        /*this float avatar will moveto the left side of its container element,
+        which makes room for the following things in the parent container to 
+        float around it. float left means that other elements will flow on left side.*/
+        /* IMPORTANT */
+        /* elements that are floating and by default parent elements dont see floating elements.  */
+        /* Whenever we use float, we have to end it by using div.clear (div element that has clear: both attributes) 
+        If we dont use .clear, we cah use pseudoelements (watch .tweet::after)*/
+        float: left;
+        margin-right: 0.5rem;
+      }
+      /* .clear {
+        /* clears the elements that are floating either to left or right */
+      /* this will undo any floating attribute */
+      /* clear: both; */
+      */ .tweet {
+        border: 3px solid lightblue;
+      }
+      /* here we add the clear div dynamically, without polluting our markup with nonsemantic elements  */
+      .clearFix::after {
+        content: "";
+        /* we turn this into a block level element (just like a dive), given that article is an inline element */
+        display: block;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- we can display a tweet, because article represent any independent selfcontained peace of content -->
+    <article class="tweet clearFix">
+      <div class="avatar"></div>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <!-- <p class="clear">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+        deserunt animi minima, enim incidunt quibusdam! Maiores, rem, voluptate
+        laudantium fuga nam suscipit, hic sed quas repellendus molestiae odio
+        repudiandae repellat perspiciatis doloremque voluptas beatae aperiam
+        quibusdam! Quis dolore adipisci reiciendis ab iste vero rem itaque enim
+        cupiditate atque magnam nam quas eligendi, sapiente voluptatibus odio,
+        possimus porro quod in velit.
+      </p> -->
+      <!-- <div class="clear"></div> -->
+    </article>
+  </body>
+</html>

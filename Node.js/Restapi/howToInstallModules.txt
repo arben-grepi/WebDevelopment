@@ -1,0 +1,11 @@
+
+npm init --yes
+npm i underscore
+
+Underscore.js: This library offers a collection of helper 
+functions for various tasks like:
+
+Array manipulation (filtering, mapping, etc.)
+Object manipulation (merging, extending, etc.)
+Iterators (working with loops and collections)
+Other utilities (functions, templates, etc.)

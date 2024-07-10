@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p::first-letter {
+        font-size: 140%;
+        font-weight: bold;
+      }
+      /* Selects the first line of the paragrpah section */
+      p::first-line {
+        color: red;
+      }
+      /* any element that is selected, will have a pink backround */
+      ::selection {
+        background-color: pink;
+      }
+      /* if we want to put some element of content before an element */
+      p::before {
+        content: "...";
+      }
+      p::after {
+        content: "THE END";
+        /* from inline to blocklevel element*/
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Heading</h2>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis, error nam
+      officiis expedita recusandae quos asperiores voluptas deleniti nisi
+      aliquid mollitia voluptatibus incidunt quasi placeat optio sapiente quas
+      magni reprehenderit. Asperiores vel, hic voluptates sequi tempore ipsum
+      iste molestias, quod libero alias quaerat. Obcaecati commodi, est modi
+      aliquid eos facilis quam, quidem rem esse unde odio eaque reiciendis
+      aliquam eligendi. Omnis molestiae ipsum quas unde officiis, inventore a
+      suscipit deleniti porro nesciunt totam voluptatum culpa ab! Nemo, voluptas
+      eum, repudiandae cumque itaque ex dolor illo temporibus, et sint enim
+      ipsum. Dicta, nulla cumque! Voluptates, itaque cum. Beatae corrupti enim
+      dicta. Fugit animi optio adipisci doloribus debitis! Reiciendis sapiente
+      maiores sit, quo tenetur accusantium, perferendis, fuga et exercitationem
+      atque sed labore! Iure veritatis, accusamus corrupti possimus quibusdam
+      nulla architecto aspernatur, accusantium dolorum veniam aliquid,
+      blanditiis maiores asperiores hic? Reiciendis modi, debitis tenetur
+      deleniti necessitatibus nesciunt nisi magni. Neque fugiat corrupti
+      explicabo?
+    </p>
+  </body>
+</html>

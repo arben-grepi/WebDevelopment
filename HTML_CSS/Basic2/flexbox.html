@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /*Sizing items. Item properties (not containers) 
+        flex-basis ()the initial size of a flex item)
+        flex-grow (the growth factor)
+        flex-shrink (the shrink factor)
+        flex*/
+
+      .container {
+        border: 3px solid lightblue;
+        display: flex;
+        /*row is set by default, can also set column
+        We can use column- or row-reverse*/
+        flex-direction: row;
+        /*We can set content to the left or right by default it is set on flex-start*/
+        /* justify-content: flex-end;
+        justify-content: space-around;
+        justify-content: space-evenly;
+        justify-content: space-between; */
+        justify-content: center;
+        align-items: flex-end;
+        align-items: flex-start;
+        height: 90vh;
+        align-content: flex-start;
+        flex-wrap: wrap;
+      }
+      .box {
+        /*By default it is set to auto, which means that the flex-basis will look at 
+        the width or height property, depending on whether we have set the flex-direction
+        to row or column. This property overrides width and height properties */
+        flex-basis: 10rem;
+
+        width: 5rem;
+        height: 5rem;
+        background: gold;
+        margin: 1rem;
+      }
+      .box-one {
+        /*What is the ratio of growth or shrink you want to see (compared to other items in the)*/
+        flex-grow: 1;
+        /* flex-shrink: 1; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box box-one">A</div>
+      <div class="box">B</div>
+      <div class="box">C</div>
+      <div class="box">D</div>
+      <div class="box">E</div>
+      <div class="box">F</div>
+    </div>
+  </body>
+</html>

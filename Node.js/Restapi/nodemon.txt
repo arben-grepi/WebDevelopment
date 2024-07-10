@@ -1,0 +1,10 @@
+npm i -g nodemon
+
+instead of running application using node, we can using nodemon
+
+Nodemon is a helpful tool for developers who work with Node.js applications. 
+It's essentially a command-line program that watches for changes in your project's files.
+  When it detects a change, it automatically restarts your Node.js application, 
+  saving you the time and hassle of manually stopping and restarting the server yourself.
+   This can significantly speed up your development workflow, especially when you're 
+   making frequent code edits and testing them.

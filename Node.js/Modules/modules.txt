@@ -1,0 +1,38 @@
+In Node.js, modules are the fundamental building blocks that allow you to organize and reuse 
+code. They encapsulate related functionalities and provide a way to import and export specific
+ parts of your code into other parts of your application or other applications.
+
+console.log(module);
+
+returns an Module object
+
+
+{
+  id: '.',
+  path: 'C:\\Users\\arben\\OneDrive\\Työpöytä\\koodausta\\Node.js\\firstApp',
+  exports: {},
+  filename: 'C:\\Users\\arben\\OneDrive\\Työpöytä\\koodausta\\Node.js\\firstApp\\app.js',
+  loaded: false,
+  children: [],
+  paths: [
+    'C:\\Users\\arben\\OneDrive\\Työpöytä\\koodausta\\Node.js\\firstApp\\node_modules',
+    'C:\\Users\\arben\\OneDrive\\Työpöytä\\koodausta\\Node.js\\node_modules',
+    'C:\\Users\\arben\\OneDrive\\Työpöytä\\koodausta\\node_modules',
+    'C:\\Users\\arben\\OneDrive\\Työpöytä\\node_modules',
+    'C:\\Users\\arben\\OneDrive\\node_modules',
+    'C:\\Users\\arben\\node_modules',
+    'C:\\Users\\node_modules',
+    'C:\\node_modules'
+  ]
+}
+
+
+Few a very useful node modules
+File System - to work with files
+HTTP - Create web servers that listen to HTTP request
+OS  - to work with operating systems
+Path - wich gives us utility functions for working with paths
+Process - that gives us information obout the corrunt process
+Query Strings - for building HTTP services
+Stream - that allows us to work with streams of data
+

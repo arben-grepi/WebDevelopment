@@ -1,0 +1,26 @@
+Query strings, also known as URL parameters, are a way to attach data to a URL after the 
+question mark (?). They are used to pass information to a web server or application, 
+influencing the content retrieved or the actions performed.
+
+
+Search and Filtering:
+
+q, query, search: These parameters typically hold the search term a user entered. 
+(e.g., https://www.amazon.com/ search for "phones": https://www.amazon.com/s?k=phones)
+sort, order: These dictate how results should be sorted (e.g., price, date, relevance).
+filter, category: Used to filter results based on specific criteria (e.g., 
+product category, size).
+page: Used for pagination, indicating which page of results to display.
+Tracking and Analytics:
+
+utm_source, utm_medium, utm_campaign: These are part of UTM parameters used for 
+tracking marketing campaigns and traffic sources.
+ref, referrer: Can indicate the referring website that directed a user to the current page.
+cid, client_id: These can be unique identifiers assigned to users for tracking purposes.
+Session Management:
+
+session_id: Used to maintain user sessions across multiple page views.
+Other Common Parameters:
+
+lang, locale: These specify the language preference of the user.
+id: Used to identify specific resources, like a product ID in an e-commerce URL.

@@ -1,0 +1,11 @@
+Miksi ympäristömuuttujia käytetään porttien asettamisessa?
+Joustavuus eri ympäristöissä:
+
+Kehitys: Kehitysympäristössä sovellusta voidaan ajaa tietyllä portilla, kuten 3000, jotta se ei konflikti muiden sovellusten kanssa.
+Tuotanto: Tuotantoympäristössä isäntäpalvelin voi määrittää, millä portilla sovellus tulee ajaa, usein satunnaisella portilla, jota web-palvelin (kuten Nginx tai Apache) käyttää.
+Yhteensopivuus palveluntarjoajien kanssa:
+
+Monet pilvipalveluntarjoajat (kuten Heroku) määrittävät portin, jota sovelluksen tulee käyttää. Tämä portti asetetaan ympäristömuuttujana ja sovelluksen on käytettävä sitä käynnistyessään.
+Yksinkertaisuus ja keskitetty hallinta:
+
+Ympäristömuuttujien avulla portin voi asettaa yhdessä paikassa ilman, että sitä tarvitsee muuttaa koodissa, mikä tekee sovelluksesta helpommin hallittavan.

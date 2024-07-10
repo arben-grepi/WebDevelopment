@@ -1,0 +1,27 @@
+Node.js is an open-source, cross-platform JavaScript runtime environment that allows developers to run JavaScript code outside of a web browser. It's designed for building scalable and efficient network applications:
+
+Open-source and cross-platform: Freely available and runs on various operating systems like Windows, Linux, macOS, etc.
+JavaScript runtime environment: Executes JavaScript code outside a web browser, expanding its application beyond front-end development.
+Event-driven and non-blocking: Handles multiple requests efficiently without blocking the main thread, making it suitable for real-time applications.
+Here's a breakdown of some key characteristics:
+
+Benefits:
+
+Single language: Developers can use JavaScript for both front-end and back-end development, reducing context switching and simplifying development processes.
+Scalability: Node.js excels at handling high-concurrency and real-time applications due to its non-blocking architecture.
+Large community and ecosystem: Boasts a vast community and extensive ecosystem of libraries and frameworks, providing solutions for various development needs.
+Use Cases:
+
+Web servers and APIs: Popular for building back-end services and APIs that power web applications.
+Real-time applications: Ideal for building chat applications, real-time dashboards, and other applications requiring frequent data updates.
+Microservices architecture: Well-suited for building microservices, which are small, independent services that communicate with each other to form larger applications.
+Comparison to Traditional JavaScript:
+
+Traditional JavaScript: Primarily runs in web browsers to create interactive web pages.
+Node.js: Executes JavaScript code outside the browser, enabling server-side scripting and building network applications.
+In summary, Node.js empowers developers to leverage their JavaScript expertise for building efficient and scalable back-end applications, expanding the potential of JavaScript beyond the traditional web browser environment.
+
+Unlike .Net, Node.js is asynchrones by default. This makes Node ideal for web application that
+require a lot of disk or network acceess. We dont need to have a lot of hardware inorder to serve many clients. 
+
+

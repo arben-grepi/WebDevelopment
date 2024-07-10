@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .product {
+        background-color: gold;
+        width: 300px;
+      }
+      span {
+        background-color: yellow;
+      }
+      img.coffee {
+        height: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- div element is block level element. It will start on a new line and fill out the 
+    whole screen space horizontly .No vizual elements -->
+    <div class="product">
+      <p>Lorem ipsum dolor sit amet.</p>
+      <a href="#">Link</a>
+    </div>
+    <div class="product">
+      <p>Lorem ipsum dolor sit amet.</p>
+      <a href="#">Link</a>
+    </div>
+
+    <!-- inline level element, not going to take the entire with of the page -->
+    <p><span>Lorem</span> ipsum dolor sit amet.</p>
+    <!-- article is an element to represent articles. It makes our markup more meaningful for search engines
+    It could be a forum post, comments, reviews or so on. -->
+    <article class="article">
+      <h1>Heading</h1>
+      <p>
+        <Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
+        debitis reprehenderit numquam commodi maiores facilis, et unde rem
+        voluptas odit, dolore corrupti voluptatem ullam pariatur. Eius non
+        nesciunt neque ex.
+      </p>
+      <!-- a container for figures. Doesent have any visual characterectics -->
+      <figure>
+        <img class="coffee" src="images/coffee.jpg" alt="" />
+        <figcaption>My coffee this morning</figcaption>
+      </figure>
+    </article>
+  </body>
+</html>

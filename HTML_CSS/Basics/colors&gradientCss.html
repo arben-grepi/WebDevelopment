@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- COLORS:
+   Named colors
+   RGB
+   HSL
+   Hexadecimal -->
+    <style>
+      .box {
+        width: 400px;
+        height: 200px;
+        /* I googled color picker, I picked a color and copied the rgb values */
+        /* The fourth number is transparency. 0 - 1 (0 being) */
+        background-color: rgb(245, 197, 135, 0.8);
+        /* we can also use a hexadecimal value */
+        background-color: #daeaf5;
+        /* we can also use hsl. Fourth value is transparency  */
+        background-color: hsl(22, 65%, 84%, 0.5);
+        /*
+        GRADIENTS
+        Gradients are technically images, so we can not use background-color property */
+        background: linear-gradient(dodgerblue, yellow);
+        background: linear-gradient(hsl(22, 65%, 84%), yellow);
+        background: linear-gradient(to right, hsl(22, 65%, 84%), yellow);
+        background: linear-gradient(to bottom right, hsl(22, 65%, 84%), black);
+        background: linear-gradient(125deg, hsl(22, 65%, 84%) 30%, black);
+
+        background: radial-gradient(hsl(22, 65%, 84%) 30%, black);
+        background: radial-gradient(circle, hsl(22, 65%, 84%) 30%, black);
+        background: radial-gradient(
+          circle at top left,
+          hsl(22, 65%, 84%) 30%,
+          black
+        );
+        /* 
+        ONLINE TOOLS FOR SEARCHING GRADIENTS
+        Google gradient generator. Click cssgradient.io */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <article>
+        <header>Header</header>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi,
+          numquam!
+        </p>
+      </article>
+    </div>
+  </body>
+</html>
