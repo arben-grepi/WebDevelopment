@@ -1,9 +1,14 @@
 # WebDevelopment
 
-Tämä repo sisältää harjoitusprojekteja
-HTML,
-CSS,
-JavaScriptin, Node.js,
-Reactin, jQueryn, REST API,
-MongoDB
-ja muun web-ohjelmoinnin parista. Repon tarkoituksena on osoittaa osaamistani tulevalle työnantajalle sekä toimia varastona harjoituksille, joihin voin palata ja kerrata oppimiani asioita.
+This repository contains practice projects focusing on:
+- HTML
+- CSS
+- JavaScript
+- Node.js
+- React
+- jQuery
+- REST API
+- MongoDB
+- and other web programming topics. 
+
+The purpose of this repository is to showcase my skills to prospective employers and serve as a repository for exercises that I can revisit to review and reinforce what I've learned.
