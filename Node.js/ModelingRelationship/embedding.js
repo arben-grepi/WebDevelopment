@@ -1,3 +1,4 @@
+const { required } = require("joi");
 const mongoose = require("mongoose");
 
 mongoose
@@ -17,14 +18,15 @@ const Course = mongoose.model(
   "Course",
   new mongoose.Schema({
     name: String,
-    author: authorSchema,
+    // author: authorSchema,
+    authors: [authorSchema],
   })
 );
 
-async function createCourse(name, author) {
+async function createCourse(name, authors) {
   const course = new Course({
     name,
-    author,
+    authors,
   });
 
   const result = await course.save();
@@ -36,14 +38,86 @@ async function listCourses() {
   console.log(courses);
 }
 
-async function updateAuthor(courseId) {
-  const course = await Course.findById(courseId);
-  console.log(course);
-  course.author.name = "Mosh Hamadani";
-  console.log(course.author.name);
-  course.save();
+async function updateAuthor(courseId, name) {
+  try {
+    const result = await Course.updateOne(
+      { _id: courseId },
+      {
+        $set: {
+          "author.name": name,
+        },
+      }
+    );
+    console.log("Update Result:", result);
+  } catch (error) {
+    console.error("Error updating author:", error);
+  }
 }
 
-// createCourse("Node Course", new Author({ name: "Mosh" }));
-// updateAuthor("669a88da9319fbd46a6b77cb");
+async function updateAuthorName(courseId, authorId, newName) {
+  try {
+    const course = await Course.findById(courseId);
+    if (!course) {
+      console.error("Course not found");
+      return;
+    }
+
+    const author = course.authors.id(authorId);
+    if (!author) {
+      console.error("Author not found");
+      return;
+    }
+
+    // Update the author's name
+    author.name = newName;
+
+    // Save the updated course document
+    await course.save();
+
+    console.log("Author name updated successfully");
+  } catch (error) {
+    console.error("Error updating author name:", error);
+  }
+}
+
+async function removeAuthor(courseId, authorId) {
+  try {
+    const course = await Course.findById(courseId);
+    if (!course) {
+      console.error("Course not found");
+      return;
+    }
+
+    // Pull the author from the authors array
+    course.authors.pull({ _id: authorId });
+    await course.save(); // Save the changes to the database
+
+    console.log("Author removed successfully");
+  } catch (error) {
+    console.error("Error removing author:", error);
+  }
+}
+
+async function addAuthor(courseId, author) {
+  const course = await Course.findById(courseId);
+  course.authors.push(author);
+  const result = await course.save();
+  console.log("Result: " + result);
+}
+
+// createCourse("Node Course", [
+//   new Author({ name: "Mosh" }),
+//   new Author({ name: "Jhon" }),
+// ]);
+
+// updateAuthor("669bda958130557a6a30787a", "Jhon Smith");
 listCourses();
+
+// addAuthor("669bda958130557a6a30787a", new Author({ name: "Amy" }));
+
+// removeAuthor("669bda958130557a6a30787a", "669bdde18c6b962306977633");
+updateAuthorName(
+  "669bda958130557a6a30787a",
+  "669bda958130557a6a307878",
+  "John Doe"
+);
