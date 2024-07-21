@@ -2,25 +2,16 @@ const express = require("express");
 const router = express.Router();
 const { Pay, validate } = require("../models/pay.js");
 
-const {
-  getPays,
-  getPaysWithID,
-  getPaysWithCategory,
-} = require("../db/getPays");
-
 // Middleware to parse JSON bodies
 router.use(express.json());
 
 //DEBUGGERS
-const dbDebugger = require("debug")("app:db");
-const reqBodyDebugger = require("debug")("app:reqBody");
+const debug = require("debug")("app:routes/pays.js");
 
 router.get("/", async (req, res) => {
-  reqBodyDebugger(JSON.stringify(req.body));
-
   try {
-    const pays = await getPays();
-    dbDebugger("Pays: " + pays);
+    const pays = await Pay.find();
+    debug("Pays: " + pays);
     res.json(pays);
   } catch (err) {
     res.status(500).send("Internal Server Error: " + err.message);
@@ -28,11 +19,9 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  reqBodyDebugger(JSON.stringify(req.body));
-
   try {
-    const pay = await getPaysWithID(req.params.id);
-    dbDebugger("Pay: " + pay);
+    const pay = await Pay.find({ _id: req.params.id });
+    debug("Pay found by Id: " + pay);
     res.json(pay);
   } catch (err) {
     res.status(500).send("Internal Server Error: " + err.message);
@@ -40,11 +29,9 @@ router.get("/:id", async (req, res) => {
 });
 
 router.get("/category/:category", async (req, res) => {
-  reqBodyDebugger(JSON.stringify(req.body));
-
   try {
-    const pays = await getPaysWithCategory(req.params.category);
-    dbDebugger("Pays: " + pays);
+    const pays = await Pay.find({ category: req.params.category });
+    debug("Pays found by category: " + pays);
     res.json(pays);
   } catch (err) {
     res.status(500).send("Internal Server Error: " + err.message);
@@ -52,8 +39,6 @@ router.get("/category/:category", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  reqBodyDebugger(JSON.stringify(req.body));
-
   try {
     // Validate request body
     const { error } = validate(req.body);
@@ -73,6 +58,8 @@ router.post("/", async (req, res) => {
 
     // Save the new pay object
     const savedPay = await newPay.save();
+    debug("Pay saved: " + savedPay);
+
     res.send(savedPay); // Respond with the saved pay object
   } catch (err) {
     console.error("Error creating pay:", err);
@@ -81,8 +68,6 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  reqBodyDebugger(JSON.stringify(req.body));
-
   if (!req.params.id) return res.status(404).send("ID not provided");
 
   try {
@@ -107,6 +92,7 @@ router.put("/:id", async (req, res) => {
 
     // Save the updated pay object
     const updatedPay = await pay.save();
+    debug("Pay updated: " + updatedPay);
     res.send(updatedPay); // Respond with the updated pay object
   } catch (err) {
     console.error("Error updating pay:", err);
@@ -115,16 +101,15 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  reqBodyDebugger(JSON.stringify(req.body));
   if (!req.params.id) return res.status(404).send("ID not provided");
   try {
     // Retrieve pay object by ID using Mongoose
     const pay = await Pay.findById(req.params.id);
-
     if (!pay) return res.status(404).send("Pay not found");
 
     // Delete the pay object
     const result = await pay.deleteOne();
+    debug("Pay deleted result: " + result);
 
     if (result.deletedCount === 1) {
       res.send("Pay deleted successfully");
