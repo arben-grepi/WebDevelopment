@@ -1,4 +1,5 @@
-const { Pay, validate } = require("../models/pay");
+const { Pay, validate } = require("../models/pay.js");
+const { Customer, validateCustomer } = require("../models/customer.js");
 
 const storePay = new Pay({
   contractName: "Store Contract",
@@ -28,7 +29,7 @@ const storePay = new Pay({
 });
 
 const restaurantPay = new Pay({
-  contractName: "Restaurant Contract", //
+  contractName: "Restaurant Contract",
   category: "restaurant",
   age: "0-2",
   hourlyRate: 11.5,
@@ -54,30 +55,58 @@ const restaurantPay = new Pay({
   },
 });
 
-// Function to validate and save a document
-async function validateAndSave(payObject) {
+async function validateAndSavePays(payObject) {
   try {
-    // Convert the Mongoose object to a plain JavaScript object
     const payObjectData = payObject.toObject();
-    console.log(payObject);
-
-    // Validate the pay object
     const { error } = await validate(payObjectData);
     if (error) {
       console.error("Validation error:", error.details[0].message);
       return;
     }
-
-    // Save the validated pay object to the database
-    const savedDoc = await payObject.save();
-    console.log("Document saved:", savedDoc);
+    return await payObject.save();
   } catch (err) {
     console.error("Error:", err);
   }
 }
 
-// Validate and save restaurantPay
-validateAndSave(restaurantPay);
+async function validateAndSaveCustomers(custObj) {
+  try {
+    const custObjData = custObj.toObject();
+    const { error } = await validateCustomer(custObjData);
+    if (error) {
+      console.error("Validation error:", error.details[0].message);
+      return;
+    }
+    return await custObj.save();
+  } catch (err) {
+    console.error("Error:", err);
+  }
+}
 
-// Validate and save storePay
-validateAndSave(storePay);
+async function createDatabase() {
+  try {
+    const restaurantResult = await validateAndSavePays(restaurantPay);
+    console.log("restaurantPay saved:", restaurantResult);
+
+    const storeResult = await validateAndSavePays(storePay);
+    console.log("storePay saved:", storeResult);
+
+    const cust1 = new Customer({
+      name: "John Smith",
+      pay: restaurantResult._id, // Use the ObjectId directly
+    });
+    const cust2 = new Customer({
+      name: "Mosh Hamedani",
+      pay: storeResult._id, // Use the ObjectId directly
+    });
+
+    const cust1Result = await validateAndSaveCustomers(cust1);
+    console.log("customer 1 saved:", cust1Result);
+    const cust2Result = await validateAndSaveCustomers(cust2);
+    console.log("customer 2 saved:", cust2Result);
+  } catch (error) {
+    console.error("Error during validation and save:", error);
+  }
+}
+
+createDatabase();

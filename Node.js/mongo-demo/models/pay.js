@@ -1,87 +1,86 @@
 const mongoose = require("../db/MongoDBConnect");
 const Joi = require("joi");
 
-const Pay = mongoose.model(
-  "Pay",
-  new mongoose.Schema({
-    contractName: {
-      type: String,
+const paySchema = new mongoose.Schema({
+  contractName: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 50,
+  },
+  category: {
+    type: String,
+    required: true,
+    enum: ["store", "restaurant", "travel"],
+    lowercase: true,
+    trim: true,
+  },
+  age: {
+    type: String,
+    required: true,
+    enum: ["0-2", "3-6", "7-12", "13<", "any"],
+    trim: true,
+  },
+  hourlyRate: Number,
+  eveningBonus: {
+    amount: {
+      type: Number,
       required: true,
-      minlength: 3,
-      maxlength: 50,
     },
-    category: {
-      type: String,
+    start: {
+      type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
       required: true,
-      enum: ["store", "restaurant", "travel"],
-      lowercase: true,
-      trim: true,
     },
-    age: {
-      type: String,
+    finish: {
+      type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
       required: true,
-      enum: ["0-2", "3-6", "7-12", "13<", "any"],
-      trim: true,
     },
-    hourlyRate: Number,
-    eveningBonus: {
-      amount: {
-        type: Number,
-        required: true,
-      },
-      start: {
-        type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
-        required: true,
-      },
-      finish: {
-        type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
-        required: true,
-      },
+  },
+  saturdayBonus: {
+    amount: {
+      type: Number,
+      required: true,
     },
-    saturdayBonus: {
-      amount: {
-        type: Number,
-        required: true,
-      },
-      start: {
-        type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
-        required: true,
-      },
-      finish: {
-        type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
-        required: true,
-      },
+    start: {
+      type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
+      required: true,
     },
-    sundayBonus: {
-      amount: {
-        type: Number,
-        required: true,
-      },
-      start: {
-        type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
-        required: true,
-      },
-      finish: {
-        type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
-        required: true,
-      },
+    finish: {
+      type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
+      required: true,
     },
-    nightBonus: {
-      amount: {
-        type: Number,
-        required: true,
-      },
-      start: {
-        type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
-        required: true,
-      },
-      finish: {
-        type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
-        required: true,
-      },
+  },
+  sundayBonus: {
+    amount: {
+      type: Number,
+      required: true,
     },
-  })
-);
+    start: {
+      type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
+      required: true,
+    },
+    finish: {
+      type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
+      required: true,
+    },
+  },
+  nightBonus: {
+    amount: {
+      type: Number,
+      required: true,
+    },
+    start: {
+      type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
+      required: true,
+    },
+    finish: {
+      type: String, // Kellonaika merkkijonona "HH:MM"-muodossa
+      required: true,
+    },
+  },
+});
+
+const Pay = mongoose.model("Pay", paySchema);
 
 const timeFormat = Joi.string()
   .custom((value, helpers) => {

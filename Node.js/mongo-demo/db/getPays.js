@@ -12,6 +12,9 @@ async function getPaysWithCategory(categ) {
 
 async function run() {
   // const pays = await getPays();
+  // pays.forEach((pay) => {
+  //   console.log(pay._id);
+  // });
   // console.log(pays);
   // const pay = await getPaysWithID("668a966f359847f68ff127c0");
   // console.log(pay);
