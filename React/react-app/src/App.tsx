@@ -1,10 +1,6 @@
-import ListGroup from "./components/ListGroup";
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 function App() {
-  return (
-    <div>
-      <ListGroup />
-    </div>
-  );
+  return <div></div>;
 }
 export default App;
