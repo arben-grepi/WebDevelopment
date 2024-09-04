@@ -1,7 +1,7 @@
-/*let data = [
-  { id: 1, firstName: "Matti", lastName: "Ruohonen" },
-  { id: 2, firstName: "Teppo", lastName: "Ruohonen" },
-];*/
+// let data = [
+//   { id: 1, firstName: "Matti", lastName: "Ruohonen" },
+//   { id: 2, firstName: "Teppo", lastName: "Ruohonen" },
+// ];
 let dictionary = [];
 const express = require("express");
 const fs = require("fs");
@@ -19,13 +19,23 @@ app.use(function (req, res, next) {
   // Website you wish to allow to connect
   res.setHeader("Access-Control-Allow-Origin", "*");
 
-  // Request methods you wish to allow
+  // Request methods you wish to allow for cross-origin requests
+  // Setting the 'Access-Control-Allow-Methods' header to specify which HTTP methods
+  // (GET, POST, OPTIONS, PUT, PATCH, DELETE) are permitted when the client is making
+  // a cross-origin request to this server. This is crucial for managing CORS and
+  // ensuring the security and functionality of the server's API.
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
   );
 
   // Request headers you wish to allow
+  // Request headers you wish to allow for cross-origin requests
+  // Setting the 'Access-Control-Allow-Headers' header to specify which HTTP headers
+  // (Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token) the client is allowed
+  // to include in requests. This is important for managing CORS and ensuring that the server
+  // only accepts necessary and safe headers, thus enhancing security and supporting
+  // custom or security-related headers.
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token"
@@ -49,7 +59,18 @@ app.get("/words", (req, res) => {
   });
   //data:ssa on nyt koko tiedoston sisältö
   /*tiedoston sisältö pitää pätkiä ja tehdä taulukko*/
+  // Split the 'data' string into an array of lines, accounting for different line endings
   const splitLines = data.split(/\r?\n/);
+
+  // 'data.split(...)' uses the split method to divide the string into an array based on the separator provided.
+
+  // The separator is a regular expression that matches line breaks:
+  // - /\r?\n/ matches both Windows-style line endings (\r\n) and Unix-style line endings (\n).
+  // - \r? matches a carriage return character (\r) if it exists (optional).
+  // - \n matches a newline character (\n).
+
+  // The result is an array called 'splitLines', where each element corresponds to a line from the original 'data' string.
+
   /*Tässä voisi käydä silmukassa läpi splitLines:ssa jokaisen rivin*/
   splitLines.forEach((line) => {
     const words = line.split(" "); //sanat taulukkoon words
@@ -65,7 +86,7 @@ app.get("/words", (req, res) => {
   res.json(dictionary);
 });
 // GET a user
-/*app.get("/users/:id", (req, res) => {
+app.get("/users/:id", (req, res) => {
   const id = Number(req.params.id);
   const user = data.find((user) => user.id === id);
   res.json(user ? user : { message: "Not found" });
@@ -88,7 +109,7 @@ app.delete("/users/:id", (req, res) => {
   const id = Number(req.params.id);
   data = data.filter((user) => user.id !== id);
   res.json(data);
-});*/
+});
 app.listen(3000, () => {
   console.log("Server listening at port 3000");
 });

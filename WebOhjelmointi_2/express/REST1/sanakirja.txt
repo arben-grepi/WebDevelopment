@@ -1,0 +1,8 @@
+auto car
+talo house
+ovi door
+katto roof
+matto mat
+hattu hat
+matto mat
+hattu hat
