@@ -58,67 +58,67 @@ app.get("/sanakirja/:sana", (req, res) => {
 });
 
 // POST-metodi, joka vastaanottaa yhden tai useamman sanaparin ja lisää ne sanakirja.txt -tiedostoon
-// app.post("/sanakirja", (req, res) => {
-//   const filePath = path.join(__dirname, "sanakirja.txt");
+app.post("/sanakirja", (req, res) => {
+  const filePath = path.join(__dirname, "sanakirja.txt");
 
-//   // Tarkista, että pyyntö sisältää sanapareja
-//   if (!Array.isArray(req.body) || req.body.length === 0) {
-//     return res.status(400).json({
-//       error:
-//         "Pyyntö tulee sisältää taulukon yhdestä tai useammasta json objektista.",
-//     });
-//   }
+  // Tarkista, että pyyntö sisältää sanapareja
+  if (!Array.isArray(req.body) || req.body.length === 0) {
+    return res.status(400).json({
+      error:
+        "Pyyntö tulee sisältää taulukon yhdestä tai useammasta json objektista.",
+    });
+  }
 
-//   // Lue nykyinen sanakirja
-//   fs.readFile(filePath, "utf8", (err, existingData) => {
-//     if (err) {
-//       // Jos tiedoston lukeminen epäonnistuu, palauta virheviesti
-//       return res
-//         .status(500)
-//         .json({ error: "Tiedoston lukeminen epäonnistui." });
-//     }
+  // Lue nykyinen sanakirja
+  fs.readFile(filePath, "utf8", (err, existingData) => {
+    if (err) {
+      // Jos tiedoston lukeminen epäonnistuu, palauta virheviesti
+      return res
+        .status(500)
+        .json({ error: "Tiedoston lukeminen epäonnistui." });
+    }
 
-//     // 1. Jaa nykyinen sanakirja riveiksi
-//     const lines = existingData.split(/\r?\n/);
+    // 1. Jaa nykyinen sanakirja riveiksi
+    const lines = existingData.split(/\r?\n/);
 
-//     // 2. Suodata tyhjät rivit pois
-//     const nonEmptyLines = lines.filter((line) => line.trim() !== "");
+    // 2. Suodata tyhjät rivit pois
+    const nonEmptyLines = lines.filter((line) => line.trim() !== "");
 
-//     // 3. Muunna jokainen rivi sanapariksi objektiksi
-//     const existingSanakirja = nonEmptyLines.map((line) => {
-//       // Jaetaan rivi sanapareiksi
-//       const parts = line.split(" ");
+    // 3. Muunna jokainen rivi sanapariksi objektiksi
+    const existingSanakirja = nonEmptyLines.map((line) => {
+      // Jaetaan rivi sanapareiksi
+      const parts = line.split(" ");
 
-//       // Hajotetaan sanapari osiin
-//       const suomi = parts[0];
-//       const englanti = parts[1];
+      // Hajotetaan sanapari osiin
+      const suomi = parts[0];
+      const englanti = parts[1];
 
-//       // Luodaan objekti sanaparista ja palautetaan se
-//       return { suomi, englanti };
-//     });
+      // Luodaan objekti sanaparista ja palautetaan se
+      return { suomi, englanti };
+    });
 
-//     // 4. Lisää uudet sanaparit olemassa olevaan sanakirjaan
-//     const newSanakirja = [...existingSanakirja, ...req.body];
+    // 4. Lisää uudet sanaparit olemassa olevaan sanakirjaan
+    const newSanakirja = [...existingSanakirja, ...req.body];
 
-//     // 5. Muunna sanakirja JSON-taulukosta tekstiin
-//     const sanakirjaText = newSanakirja
-//       .map((entry) => `${entry.suomi} ${entry.englanti}`)
-//       .join("\n");
+    // 5. Muunna sanakirja JSON-taulukosta tekstiin
+    const sanakirjaText = newSanakirja
+      .map((entry) => `${entry.suomi} ${entry.englanti}`)
+      .join("\n");
 
-//     // 6. Kirjoita teksti tiedostoon asynkronisesti
-//     fs.writeFile(filePath, sanakirjaText, "utf8", (err) => {
-//       if (err) {
-//         // Jos tiedoston kirjoittaminen epäonnistuu, palauta virheviesti
-//         return res
-//           .status(500)
-//           .json({ error: "Tiedoston kirjoittaminen epäonnistui." });
-//       }
+    // 6. Kirjoita teksti tiedostoon asynkronisesti
+    fs.writeFile(filePath, sanakirjaText, "utf8", (err) => {
+      if (err) {
+        // Jos tiedoston kirjoittaminen epäonnistuu, palauta virheviesti
+        return res
+          .status(500)
+          .json({ error: "Tiedoston kirjoittaminen epäonnistui." });
+      }
 
-//       // Palauta onnistumisviesti
-//       res.json({ message: "Sanakirjatiedot on päivitetty onnistuneesti." });
-//     });
-//   });
-// });
+      // Palauta onnistumisviesti
+      res.json({ message: "Sanakirjatiedot on päivitetty onnistuneesti." });
+    });
+  });
+});
 
 app.listen(3000, () => {
   console.log("Server listening at port 3000");
