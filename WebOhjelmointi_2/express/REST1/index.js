@@ -31,12 +31,10 @@ app.use(function (req, res, next) {
 
 //Hae suomenkielisen sana vastine query parametrilla
 app.get("/sanakirja/:sana", (req, res) => {
-  const suomenkielinensana = req.params.sana;
-  if (!suomenkielinensana) {
+  const suomisana = req.params.sana;
+  if (!suomisana) {
     // Jos sanaa ei annettu, lähetetään virheviesti
-    return res
-      .status(400)
-      .json({ error: "Anna suomenkielinen sana query-parametrina" });
+    return res.status(400).json({ error: "Anna suomi sana query-parametrina" });
   }
   const data = fs.readFileSync("./sanakirja.txt", {
     encoding: "utf8",
@@ -51,73 +49,63 @@ app.get("/sanakirja/:sana", (req, res) => {
     return { s, e };
   });
   const match = dictionary.find(
-    (line) => line.s.toLowerCase() === suomenkielinensana.toLowerCase()
+    (line) => line.s.toLowerCase() === suomisana.toLowerCase()
   );
   if (match) return res.json(match.e);
   else return res.status(404).json({ error: "sanaa ei löytynyt sanakirjasta" });
 });
 
-// POST-metodi, joka vastaanottaa yhden tai useamman sanaparin ja lisää ne sanakirja.txt -tiedostoon
+// Lisää uusi sana sanakirjaan
 app.post("/sanakirja", (req, res) => {
-  const filePath = path.join(__dirname, "sanakirja.txt");
+  const { suomi, englanti } = req.body;
 
-  // Tarkista, että pyyntö sisältää sanapareja
-  if (!Array.isArray(req.body) || req.body.length === 0) {
-    return res.status(400).json({
-      error:
-        "Pyyntö tulee sisältää taulukon yhdestä tai useammasta json objektista.",
-    });
+  // Tarkista, että molemmat sanat on annettu
+  if (!suomi || !englanti) {
+    // Jos sanoja ei ole annettu, lähetetään virheviesti
+    return res
+      .status(400)
+      .json({ error: "Anna sekä suomi että englanti sana" });
   }
 
-  // Lue nykyinen sanakirja
-  fs.readFile(filePath, "utf8", (err, existingData) => {
-    if (err) {
-      // Jos tiedoston lukeminen epäonnistuu, palauta virheviesti
-      return res
-        .status(500)
-        .json({ error: "Tiedoston lukeminen epäonnistui." });
-    }
-
-    // 1. Jaa nykyinen sanakirja riveiksi
-    const lines = existingData.split(/\r?\n/);
-
-    // 2. Suodata tyhjät rivit pois
-    const nonEmptyLines = lines.filter((line) => line.trim() !== "");
-
-    // 3. Muunna jokainen rivi sanapariksi objektiksi
-    const existingSanakirja = nonEmptyLines.map((line) => {
-      // Jaetaan rivi sanapareiksi
-      const parts = line.split(" ");
-
-      // Hajotetaan sanapari osiin
-      const suomi = parts[0];
-      const englanti = parts[1];
-
-      // Luodaan objekti sanaparista ja palautetaan se
-      return { suomi, englanti };
-    });
-
-    // 4. Lisää uudet sanaparit olemassa olevaan sanakirjaan
-    const newSanakirja = [...existingSanakirja, ...req.body];
-
-    // 5. Muunna sanakirja JSON-taulukosta tekstiin
-    const sanakirjaText = newSanakirja
-      .map((entry) => `${entry.suomi} ${entry.englanti}`)
-      .join("\n");
-
-    // 6. Kirjoita teksti tiedostoon asynkronisesti
-    fs.writeFile(filePath, sanakirjaText, "utf8", (err) => {
-      if (err) {
-        // Jos tiedoston kirjoittaminen epäonnistuu, palauta virheviesti
-        return res
-          .status(500)
-          .json({ error: "Tiedoston kirjoittaminen epäonnistui." });
-      }
-
-      // Palauta onnistumisviesti
-      res.json({ message: "Sanakirjatiedot on päivitetty onnistuneesti." });
-    });
+  // Lue tiedosto synkronisesti
+  const data = fs.readFileSync("./sanakirja.txt", {
+    encoding: "utf8",
+    flag: "r",
   });
+
+  // Jaetaan tiedoston sisältö riveiksi
+  const lines = data.trim().split(/\r?\n/);
+
+  // Luodaan sanakirjaobjekti riveistä
+  const dictionary = lines.map((line) => {
+    const parts = line.split(" ");
+    const s = parts[0];
+    const e = parts[1];
+    return { s, e };
+  });
+
+  // Tarkistetaan, onko sana jo olemassa sanakirjassa
+  const match = dictionary.find(
+    (line) => line.s.toLowerCase() === suomi.toLowerCase()
+  );
+
+  if (match) {
+    // Jos sana löytyy jo, palautetaan virhe
+    return res.status(409).json({ error: "Sana on jo sanakirjassa" });
+  }
+
+  // Lisätään uusi sanapari sanakirjaan
+  const newEntry = `${suomi} ${englanti}`;
+  const updatedData = `${data.trim()}\n${newEntry}`;
+
+  // Kirjoitetaan päivitetty sanakirja takaisin tiedostoon
+  fs.writeFileSync("./sanakirja.txt", updatedData, {
+    encoding: "utf8",
+    flag: "w",
+  });
+
+  // Lähetetään onnistumisviesti
+  return res.status(201).json({ message: "Sana lisätty onnistuneesti" });
 });
 
 app.listen(3000, () => {

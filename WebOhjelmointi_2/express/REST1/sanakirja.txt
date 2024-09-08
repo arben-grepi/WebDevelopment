@@ -1,9 +1,3 @@
 auto car
 talo house
 matto mat
-ovi door
-tuoli hat
-katto roof
-ovi door
-tuoli hat
-katto roof
