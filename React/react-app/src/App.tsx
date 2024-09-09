@@ -1,13 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
-import { useState } from "react";
+import Form from "./components/Form";
 
 function App() {
-  const [bug, setBug] = useState([
-    { id: 1, title: "Bug 1", fixed: false },
-    { id: 2, title: "Bug2", fixed: false },
-  ]);
-
-  return <div></div>;
+  return (
+    <div>
+      <Form></Form>
+    </div>
+  );
 }
+
 export default App;
