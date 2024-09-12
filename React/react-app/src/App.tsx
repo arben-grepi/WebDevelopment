@@ -1,9 +1,9 @@
-import Form from "./components/Form";
+import FormReactHookFormWithZod from "./components/Form/FormReactHookFormWithZod";
 
 function App() {
   return (
     <div>
-      <Form></Form>
+      <FormReactHookFormWithZod></FormReactHookFormWithZod>
     </div>
   );
 }
