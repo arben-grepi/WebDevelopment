@@ -32,4 +32,3 @@ exports.createNewPost = async (req, res, next) => {
     next(error);
   }
 };
-
