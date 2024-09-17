@@ -1,10 +1,31 @@
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Grid, GridItem, Show, useBreakpointValue } from "@chakra-ui/react";
 
 function App() {
+  const templateAreas = useBreakpointValue({
+    // The `base` key refers to mobile and smaller screen sizes. The grid layout will consist of two rows:
+    // - First row: "nav nav" (the "nav" component spans across both columns)
+    // - Second row: "main main" (the "main" component spans across both columns)
+    base: `"nav nav" "main main"`,
+
+    // The `lg` key refers to large screens (desktop and above). The layout will change to:
+    // - First row: "nav nav" (the "nav" component still spans across both columns)
+    // - Second row: "aside main" (the "aside" and "main" components will each take up one column)
+    lg: `"nav nav" "aside main"`,
+  });
   return (
-    <div>
-      <Button colorScheme="blue">Button</Button>
-    </div>
+    <Grid templateAreas={templateAreas}>
+      <GridItem bg={"coral"} area={"nav"}>
+        Nav
+      </GridItem>
+      <Show above="lg">
+        <GridItem bg={"gold"} area={"aside"}>
+          Aside
+        </GridItem>
+      </Show>
+      <GridItem bg={"dodgerblue"} area={"main"}>
+        Main
+      </GridItem>
+    </Grid>
   );
 }
 
