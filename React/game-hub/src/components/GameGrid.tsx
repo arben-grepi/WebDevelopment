@@ -1,37 +1,8 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
 import { Text } from "@chakra-ui/react";
-
-interface Game {
-  id: number;
-  name: string;
-}
-
-interface FetchGamesResponse {
-  count: number;
-  results: Game[];
-}
+import useGames from "../hooks/usegames";
 
 export const GameGrid = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    apiClient
-      .get<FetchGamesResponse>("/games")
-      .then((res) => {
-        if (res.data && res.data.results) {
-          setGames(res.data.results);
-        } else {
-          setError("Invalid response format.");
-        }
-      })
-      .catch((err) => {
-        setError(err.message);
-        console.log(err.message);
-      });
-  }, []); // <-- Add the empty array here
-
+  const { games, error } = useGames();
   return (
     <>
       {error && <Text>{error}</Text>}
