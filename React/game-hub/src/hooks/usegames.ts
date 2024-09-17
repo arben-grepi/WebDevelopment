@@ -13,6 +13,7 @@ export interface Game {
   name: string;
   background_image: string;
   parent_platforms: { platform: Platform }[]; //design flaw, this doesent make any sense
+  metacritic: number;
 }
 
 interface FetchGamesResponse {
