@@ -1,0 +1,8 @@
+auto car
+talo house
+matto mat
+kirja book
+kirja2 book2
+moikka Hellou
+mitä what
+muki cup

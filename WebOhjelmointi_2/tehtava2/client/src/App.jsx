@@ -1,10 +1,10 @@
-import Form from "./components/Form";
+import Form from "./components/FormAddWord";
 
 function App() {
   return (
     <>
       <div
-        className="container d-flex justify-content-center align-items-center"
+        className="container justify-content-center"
         style={{ height: "100vh" }} // Full-height to center vertically
       >
         <Form />
