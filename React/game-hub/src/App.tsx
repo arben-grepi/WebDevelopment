@@ -1,5 +1,5 @@
 import { Grid, GridItem, Show, useBreakpointValue } from "@chakra-ui/react";
-import { NavBar } from "./components/NavBar";
+import { NavBar } from "./components/nav/NavBar";
 import { GameGrid } from "./components/main/GameGrid";
 import { GenreList } from "./components/aside/GenreList";
 
