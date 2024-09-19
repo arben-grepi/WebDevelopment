@@ -5,7 +5,7 @@ import { schema, FormData } from "./FormAddWordVal";
 import { useDictionary } from "../hooks/useSanakirja";
 
 const Form = () => {
-  const { error, postWords } = useDictionary();
+  const { postWords } = useDictionary();
   const [responseMessage, setResponseMessage] = useState("");
 
   const {
@@ -27,7 +27,7 @@ const Form = () => {
       });
 
       // Set response message to display
-      setResponseMessage(message);
+      if (message) setResponseMessage(message);
 
       // Wait 1 second, then reset inputs and clear the message
       setTimeout(() => {
