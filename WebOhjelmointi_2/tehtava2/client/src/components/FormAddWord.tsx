@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useForm, FieldValues } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { schema, FormData } from "./FormAddWordVal";
-import { useDictionary } from "../hooks/useSanakirja";
+import { postWords } from "../hooks/useSanakirja";
 
 const Form = () => {
-  const { postWords } = useDictionary();
   const [responseMessage, setResponseMessage] = useState("");
 
   const {
@@ -44,6 +43,7 @@ const Form = () => {
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="w-100">
         <div className="mb-3">
+          <h2 style={{ marginBottom: "40px" }}>Lisää sana sanakirjaan</h2>
           <label htmlFor="suomeksi" className="form-label">
             Suomeksi
           </label>
@@ -78,7 +78,6 @@ const Form = () => {
         </button>
       </form>
 
-      {/* Display the response message */}
       {responseMessage && (
         <div className="mt-3">
           <p>{responseMessage}</p>

@@ -1,15 +1,16 @@
-import Form from "./components/FormAddWord";
+import FormAddWord from "./components/FormAddWord";
+import FormGetWords from "./components/FormGetWord";
 
 function App() {
   return (
-    <>
-      <div
-        className="container justify-content-center"
-        style={{ height: "100vh" }} // Full-height to center vertically
-      >
-        <Form />
+    <div className="d-flex justify-content-center">
+      <div style={{ marginRight: "100px" }}>
+        <FormAddWord />
       </div>
-    </>
+      <div>
+        <FormGetWords />
+      </div>
+    </div>
   );
 }
 
