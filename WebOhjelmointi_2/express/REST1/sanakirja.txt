@@ -1,3 +1,0 @@
-auto car
-talo house
-matto mat
