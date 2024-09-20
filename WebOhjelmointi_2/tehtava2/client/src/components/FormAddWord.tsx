@@ -40,41 +40,42 @@ const Form = () => {
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={handleSubmit(onSubmit)} className="w-100">
-        <div className="mb-3">
-          <h2 style={{ marginBottom: "40px" }}>Lisää sana sanakirjaan</h2>
-          <label htmlFor="suomeksi" className="form-label">
-            Suomeksi
-          </label>
-          <input
-            {...register("suomeksi")}
-            id="suomeksi"
-            type="text"
-            className="form-control"
-            style={{ width: "200px" }}
-          />
-          {errors.suomeksi && (
-            <p className="text-danger">{errors.suomeksi.message}</p>
-          )}
-        </div>
-        <div className="mb-3">
-          <label htmlFor="englanniksi" className="form-label">
-            Englanniksi
-          </label>
-          <input
-            {...register("englanniksi")}
-            id="englanniksi"
-            type="text"
-            className="form-control"
-            style={{ width: "200px" }}
-          />
-          {errors.englanniksi && (
-            <p className="text-danger">{errors.englanniksi.message}</p>
-          )}
-        </div>
-        <button disabled={!isValid} type="submit" className="btn btn-primary">
-          Submit
+        <h4>Lisää sana sanakirjaan</h4>
+        <label htmlFor="suomeksi" className="form-label mt-3">
+          Suomeksi
+        </label>
+        <input
+          {...register("suomeksi")}
+          id="suomeksi"
+          type="text"
+          className="form-control"
+          style={{ width: "200px" }}
+        />
+        {errors.suomeksi && (
+          <p className="text-danger">{errors.suomeksi.message}</p>
+        )}
+
+        <label htmlFor="englanniksi" className="form-label mt-3">
+          Englanniksi
+        </label>
+        <input
+          {...register("englanniksi")}
+          id="englanniksi"
+          type="text"
+          className="form-control"
+          style={{ width: "200px" }}
+        />
+        {errors.englanniksi && (
+          <p className="text-danger">{errors.englanniksi.message}</p>
+        )}
+        <button
+          disabled={!isValid}
+          type="submit"
+          className="btn btn-primary w-30 mt-3"
+        >
+          Lisää sanakirjaan
         </button>
       </form>
 
@@ -83,7 +84,7 @@ const Form = () => {
           <p>{responseMessage}</p>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
