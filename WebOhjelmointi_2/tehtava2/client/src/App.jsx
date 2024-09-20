@@ -5,14 +5,14 @@ function App() {
   return (
     <>
       <div className="row">
-        <div className="col">col</div>
-        <div className="col-4 mr-4">
+        <div className="col"></div>
+        <div className="col-2 ">
           <FormAddWord />
         </div>
-        <div className="col-4">
+        <div className="col-2">
           <FormGetWords />
         </div>
-        <div className="col">col</div>
+        <div className="col"></div>
       </div>
     </>
 
