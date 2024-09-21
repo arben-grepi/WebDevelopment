@@ -1,4 +1,4 @@
-import useGenres from "../../hooks/usegenres";
+import useGenres from "../../hooks/useGenres";
 
 export const GenreList = () => {
   const { data } = useGenres();

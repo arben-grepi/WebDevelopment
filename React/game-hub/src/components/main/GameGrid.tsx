@@ -16,12 +16,7 @@ export const GameGrid = () => {
         padding={"10px"}
         spacing={10}
       >
-        {isLoading &&
-          skeletons.map((skel) => (
-            <GameCardContainer>
-              <GameCardSceleton key={skel} />
-            </GameCardContainer>
-          ))}
+        {isLoading && skeletons.map((skel) => <GameCardSceleton key={skel} />)}
         {data.map((game: Game) => (
           <GameCardContainer>
             <GameCard key={game.id} game={game}></GameCard>
