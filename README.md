@@ -11,4 +11,3 @@ This repository contains practice projects focusing on:
 - MongoDB
 - and other web programming topics. 
 
-The purpose of this repository is to showcase my skills to prospective employers and serve as a repository for exercises that I can revisit to review and reinforce what I've learned.
