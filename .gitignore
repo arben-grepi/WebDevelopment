@@ -114,3 +114,11 @@ out/
 
 # TypeScript
 *.tsbuildinfo
+
+# React Native/Expo specific files
+.expo/
+.expo-shared/
+
+# iOS and Android build directories
+ios/
+android/
